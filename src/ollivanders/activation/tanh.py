@@ -1,4 +1,4 @@
-from olivanders.activations import Activation
+from ollivanders.activations import Activation
 import numpy as np
 
 
