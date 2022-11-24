@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "olivanders"
+version = "0.0.0"
+authors = [
+  { name="Mohammed Belgoumri", email="mohammedbelgoumri@gmail.com" },
+]
+classifiers = [
+  "Programming Language :: Python :: 3"
+]
+requires-python = ">=3.10"
