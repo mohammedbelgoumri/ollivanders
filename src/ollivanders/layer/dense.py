@@ -7,10 +7,10 @@ class Dense(Layer):
 
     def __init__(self, x_shape, y_shape) -> None:
         super().__init__()
-        weights = np.random.randn(*x_shape, *y_shape)
-        biases = np.random.randn(1, *y_shape)
+        weights = np.random.randn(*y_shape, *x_shape)
+        biases = np.random.randn(*y_shape, 1)
         # parameter matrix
-        self.matrix = np.concatenate([weights, biases], axis=0)
+        self.matrix = np.concatenate([weights, biases], axis=1)
 
     def forward(self, x: np.ndarray) -> np.ndarray:
         self.input = np.concatenate([x, [1]], axis=0)
