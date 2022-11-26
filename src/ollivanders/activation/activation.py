@@ -1,4 +1,5 @@
 from ollivanders.layer.layer import Layer
+import numpy as np
 
 
 class Activation(Layer):
@@ -15,4 +16,4 @@ class Activation(Layer):
         return self.activation(self.input)
 
     def backward(self, dy, lr):
-        return dy * self.d_activation(self.input)
+        return np.reshape(dy, -1) * self.d_activation(self.input.reshape(-1))

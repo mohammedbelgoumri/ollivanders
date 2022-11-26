@@ -14,10 +14,15 @@ class Dense(Layer):
 
     def forward(self, x: np.ndarray) -> np.ndarray:
         self.input = np.concatenate([x, [1]], axis=0)
-        return np.dot(self.input, self.matrix)
+        # print(f"{self.matrix.shape} × {self.input.shape}\n")
+        return np.dot(self.matrix, self.input)
 
     def backward(self, dy, lr) -> np.ndarray:
-        print(self.input.T.shape)
-        dw = np.dot(dy, self.input.T)
+        reshaped = np.reshape(self.input, (-1, 1))
+        if len(dy.shape) == 1:
+            dy = np.reshape(dy, (-1, 1))
+        # print(f"{dy.shape} × {reshaped.T.shape}")
+        dw = np.dot(dy, reshaped.T)
+        # print(f"{self.matrix[:, :-1].T.shape} × {dy.shape}\n")
         self.matrix -= dw * lr
-        return np.dot(self.matrix[:-1, :].T, dy)
+        return np.dot(self.matrix[:, :-1].T, dy)
