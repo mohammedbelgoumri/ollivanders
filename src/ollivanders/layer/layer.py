@@ -1,3 +1,4 @@
+import numpy as np
 class Layer:
     """
     Base class for all layers
@@ -21,3 +22,6 @@ class Layer:
         + Computes the gradient of the previous layer (dx) given the current gradient (dy)
         """
         raise NotImplementedError
+
+    def __call__(self, x) -> np.ndarray:
+        return self.forward(x)
