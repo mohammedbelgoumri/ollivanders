@@ -1,8 +1,8 @@
-from ollivanders.layer.layer import Layer
 import numpy as np
+from ollivanders.layer.layer import Layer
 
 
-class Dense(Layer):
+class Linear(Layer):
     """A fully connected layer"""
 
     def __init__(self, x_shape, y_shape) -> None:
